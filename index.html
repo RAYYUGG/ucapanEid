@@ -2,10 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-
-<!-- WAJIB biar responsive di HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Ucapan Idul Fitri</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
@@ -20,74 +17,69 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg, #0f2027, #2c5364);
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  color: white;
   padding: 15px;
+  color: white;
 }
 
-/* Glow tetap tapi lebih aman di HP */
-body::before, body::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  filter: blur(120px);
-  z-index: 0;
-}
-
-body::before {
-  background: #00c9a7;
-  top: -80px;
-  left: -80px;
-}
-
-body::after {
-  background: #ffd700;
-  bottom: -80px;
-  right: -80px;
-}
-
-/* Container responsive */
+/* Container */
 .container {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: 350px;
-  padding: 25px;
+  max-width: 360px;
+  background: rgba(255,255,255,0.08);
   border-radius: 20px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  padding: 25px;
   text-align: center;
-  animation: fadeIn 1s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  animation: fadeIn 0.6s ease;
 }
 
-/* Text lebih adaptif */
+/* Desktop lebih besar */
+@media (min-width: 768px) {
+  .container {
+    max-width: 420px;
+    padding: 35px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+/* Icon */
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Text */
 h1 {
-  margin-bottom: 12px;
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 p {
   font-size: 14px;
+  opacity: 0.9;
 }
 
-/* Input lebih enak di HP */
+/* Input */
 input {
   width: 100%;
   padding: 12px;
-  border-radius: 12px;
+  margin: 15px 0;
+  border-radius: 10px;
   border: none;
   outline: none;
-  margin: 15px 0;
   text-align: center;
-  background: rgba(255,255,255,0.2);
-  color: white;
   font-size: 14px;
 }
 
@@ -96,53 +88,49 @@ button {
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #00c9a7, #00a68c);
+  border-radius: 10px;
+  background: #00c9a7;
   color: white;
-  cursor: pointer;
   font-weight: bold;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.03);
 }
 
 button:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
+/* Hidden */
 .hidden {
   display: none;
 }
 
-.icon {
-  font-size: 40px;
-  margin-bottom: 10px;
-  animation: float 2s infinite ease-in-out;
-}
-
 /* Animasi */
 @keyframes fadeIn {
-  from {opacity: 0; transform: translateY(30px);}
+  from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
 }
-
-@keyframes float {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-8px);}
-}
 </style>
-
 </head>
+
 <body>
 
+<!-- PAGE 1 -->
 <div class="container" id="page1">
   <div class="icon">🌙</div>
   <h1>Selamat Datang</h1>
-  <p>Masukkan namamu dulu ya ✨</p>
+  <p>Masukkan nama kamu</p>
   <input type="text" id="nama" placeholder="Nama kamu">
   <button onclick="lanjut()">Lanjut</button>
 </div>
 
+<!-- PAGE 2 -->
 <div class="container hidden" id="page2">
-  <div class="icon">🕌✨</div>
+  <div class="icon">🕌</div>
   <h1>Selamat Hari Raya Idul Fitri</h1>
   <p id="ucapanText"></p>
   <p><b>Mohon maaf lahir dan batin 🙏</b></p>
@@ -161,7 +149,7 @@ function lanjut() {
   document.getElementById("page2").classList.remove("hidden");
 
   document.getElementById("ucapanText").innerHTML =
-    "Halo <b>" + nama + "</b>, semoga di hari yang fitri ini kamu selalu diberi kebahagiaan, kesehatan, dan rezeki yang melimpah 🤲✨";
+    "Halo <b>" + nama + "</b>, semoga di hari yang fitri ini kamu selalu diberi kebahagiaan, kesehatan, dan rezeki 🤲✨";
 }
 </script>
 
