@@ -2,6 +2,10 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+
+<!-- WAJIB biar responsive di HP -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ucapan Idul Fitri</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
@@ -15,44 +19,46 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   color: white;
+  padding: 15px;
+}
+
+/* Glow tetap tapi lebih aman di HP */
+body::before, body::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
 }
 
 body::before {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
   background: #00c9a7;
-  border-radius: 50%;
-  filter: blur(150px);
-  top: -100px;
-  left: -100px;
+  top: -80px;
+  left: -80px;
 }
 
 body::after {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
   background: #ffd700;
-  border-radius: 50%;
-  filter: blur(150px);
-  bottom: -100px;
-  right: -100px;
+  bottom: -80px;
+  right: -80px;
 }
 
+/* Container responsive */
 .container {
   position: relative;
   z-index: 1;
-  width: 320px;
-  padding: 30px;
+  width: 100%;
+  max-width: 350px;
+  padding: 25px;
   border-radius: 20px;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(15px);
@@ -61,11 +67,17 @@ body::after {
   animation: fadeIn 1s ease;
 }
 
+/* Text lebih adaptif */
 h1 {
-  margin-bottom: 15px;
-  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 20px;
 }
 
+p {
+  font-size: 14px;
+}
+
+/* Input lebih enak di HP */
 input {
   width: 100%;
   padding: 12px;
@@ -76,14 +88,13 @@ input {
   text-align: center;
   background: rgba(255,255,255,0.2);
   color: white;
+  font-size: 14px;
 }
 
-input::placeholder {
-  color: #ddd;
-}
-
+/* Button */
 button {
-  padding: 12px 25px;
+  width: 100%;
+  padding: 12px;
   border: none;
   border-radius: 12px;
   background: linear-gradient(135deg, #00c9a7, #00a68c);
@@ -93,31 +104,21 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #00c9a7;
+button:active {
+  transform: scale(0.95);
 }
-
 
 .hidden {
   display: none;
 }
 
-.ucapan h1 {
-  font-size: 20px;
-}
-
-.ucapan p {
-  margin-top: 10px;
-  line-height: 1.5;
-}
-
 .icon {
-  font-size: 45px;
+  font-size: 40px;
   margin-bottom: 10px;
   animation: float 2s infinite ease-in-out;
 }
 
+/* Animasi */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(30px);}
   to {opacity: 1; transform: translateY(0);}
@@ -125,7 +126,7 @@ button:hover {
 
 @keyframes float {
   0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
+  50% {transform: translateY(-8px);}
 }
 </style>
 
@@ -140,7 +141,7 @@ button:hover {
   <button onclick="lanjut()">Lanjut</button>
 </div>
 
-<div class="container hidden ucapan" id="page2">
+<div class="container hidden" id="page2">
   <div class="icon">🕌✨</div>
   <h1>Selamat Hari Raya Idul Fitri</h1>
   <p id="ucapanText"></p>
