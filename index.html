@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Ucapan Idul Fitri</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #00c9a7;
+  border-radius: 50%;
+  filter: blur(150px);
+  top: -100px;
+  left: -100px;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #ffd700;
+  border-radius: 50%;
+  filter: blur(150px);
+  bottom: -100px;
+  right: -100px;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 320px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  margin: 15px 0;
+  text-align: center;
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00c9a7, #00a68c);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00c9a7;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.ucapan h1 {
+  font-size: 20px;
+}
+
+.ucapan p {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+  animation: float 2s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes float {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+</style>
+
+</head>
+<body>
+
+<div class="container" id="page1">
+  <div class="icon">🌙</div>
+  <h1>Selamat Datang</h1>
+  <p>Masukkan namamu dulu ya ✨</p>
+  <input type="text" id="nama" placeholder="Nama kamu">
+  <button onclick="lanjut()">Lanjut</button>
+</div>
+
+<div class="container hidden ucapan" id="page2">
+  <div class="icon">🕌✨</div>
+  <h1>Selamat Hari Raya Idul Fitri</h1>
+  <p id="ucapanText"></p>
+  <p><b>Mohon maaf lahir dan batin 🙏</b></p>
+</div>
+
+<script>
+function lanjut() {
+  const nama = document.getElementById("nama").value;
+
+  if(nama.trim() === "") {
+    alert("Isi nama dulu ya 😄");
+    return;
+  }
+
+  document.getElementById("page1").classList.add("hidden");
+  document.getElementById("page2").classList.remove("hidden");
+
+  document.getElementById("ucapanText").innerHTML =
+    "Halo <b>" + nama + "</b>, semoga di hari yang fitri ini kamu selalu diberi kebahagiaan, kesehatan, dan rezeki yang melimpah 🤲✨";
+}
+</script>
+
+</body>
+</html>
