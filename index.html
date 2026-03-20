@@ -38,20 +38,14 @@ body {
   animation: fadeIn 0.6s ease;
 }
 
-/* Desktop lebih besar */
-@media (min-width: 768px) {
-  .container {
-    max-width: 420px;
-    padding: 35px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  p {
-    font-size: 15px;
-  }
+/* Foto */
+.foto {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #00c9a7;
 }
 
 /* Icon */
@@ -80,7 +74,6 @@ input {
   border: none;
   outline: none;
   text-align: center;
-  font-size: 14px;
 }
 
 /* Button */
@@ -93,15 +86,6 @@ button {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  transform: scale(1.03);
-}
-
-button:active {
-  transform: scale(0.96);
 }
 
 /* Hidden */
@@ -130,10 +114,15 @@ button:active {
 
 <!-- PAGE 2 -->
 <div class="container hidden" id="page2">
+  
+  <!-- FOTO KAMU -->
+  <img src="foto.jpg" class="foto">
+
   <div class="icon">🕌</div>
   <h1>Selamat Hari Raya Idul Fitri</h1>
   <p id="ucapanText"></p>
   <p><b>Mohon maaf lahir dan batin 🙏</b></p>
+
 </div>
 
 <script>
@@ -149,7 +138,7 @@ function lanjut() {
   document.getElementById("page2").classList.remove("hidden");
 
   document.getElementById("ucapanText").innerHTML =
-    "Halo <b>" + nama + "</b>, semoga di hari yang fitri ini kamu selalu diberi kebahagiaan, kesehatan, dan rezeki 🤲✨";
+    "Halo <b>" + nama + "</b>, semoga di hari yang fitri ini kamu selalu diberi kebahagiaan 🤲✨";
 }
 </script>
 
